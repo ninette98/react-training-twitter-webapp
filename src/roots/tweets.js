@@ -26,6 +26,11 @@ class Tweets extends Component {
     };
     this.props.addTweet(tweet);
   }
+
+  componentDidMount() {
+    this.props.getTweets();
+  }
+
   render() {
     const { tweets } = this.props;
     return (

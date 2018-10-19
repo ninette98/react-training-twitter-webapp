@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { applyMiddleware, createStore } from 'redux';
 import reducer from './redux/reducer';
+import createSagaMiddleware from 'redux-saga';
+import mainSaga from './sagas';
+import { Provider } from 'react-redux';
 import App from './app';
+import { BrowserRouter as Router } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const store = createStore(reducer);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+    reducer,
+    applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(mainSaga);
 
 const Root = () => (
     <Provider store={store}>

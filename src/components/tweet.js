@@ -5,7 +5,7 @@ class Tweet extends Component {
     const { username, content } = this.props;
     return (
         <div className='alert alert-light'>
-            <h4 class='alert-heading'>{username}</h4>
+            <h4 className='alert-heading'>{username}</h4>
             <p>{content}</p>
         </div>
     );

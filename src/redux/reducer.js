@@ -1,4 +1,4 @@
-import { UPDATE_USERNAME, ADD_TWEET } from './actions';
+import { UPDATE_USERNAME, ADD_TWEET, GET_TWEETS_SUCCESS } from './actions';
 
 const INIT_STATE = {
     username: 'Ilyas Hanagria',
@@ -16,6 +16,11 @@ const reducer = (state = INIT_STATE, action) => {
             return {
                 ...state,
                 tweets: [...state.tweets, action.tweet]
+            };
+        case GET_TWEETS_SUCCESS:
+            return {
+                ...state,
+                tweets: action.tweets
             };
         default:
             return state;
